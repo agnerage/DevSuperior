@@ -1,17 +1,30 @@
+// Imports of the needed class
+
 import java.util.Scanner;
 import java.util.Locale;
 import java.util.List;
 import java.util.ArrayList;
 
+//Execute the main program
 public class Main {
     public static void main(String[] args) {
+
+        //Instance of  Scanner for the user inputs
         Scanner sc = new Scanner(System.in);
         Locale.setDefault(Locale.US);
 
+        //Instance of a new ArrayList
         List<Employee> list = new ArrayList<>();
 
+
+         
         System.out.print("Enter the number of employees:");
-        int n = sc.nextInt();
+ 
+        int n = sc.nextInt();          // Capture the user input
+
+       /* A For Loop will run n times 
+         as the user wants in the input, and each time it will 
+         instance a new Employee and after it will add the new Employee in the list created before */
 
         for (int i = 1; i <= n; i++) {
             System.out.println("Employee #" + i + " data:");
@@ -24,6 +37,10 @@ public class Main {
             int hours = sc.nextInt();
             System.out.print("Value per hour: ");
             double valuePerHour = sc.nextDouble();
+
+         /* theres a conditional: if the employee is outsourced he will be an 
+         instance and add in list but he it is  using polimorfism of the method overrided */
+
             if (ch == 'y') {
                 System.out.print("Additional charge: ");
                 double additionalCharge = sc.nextDouble();
@@ -33,9 +50,12 @@ public class Main {
             }
         }
 
+        // in the end it will show the full data
+
         System.out.println();
         System.out.println("PAYMENTS:");
 
+       // another For Each will run in the Employee list created and show all the instances and parameters
         for (Employee emp : list) {
             System.out.println(emp.getName() + " - $ " + String.format("%.2f", emp.payment()));
         }
