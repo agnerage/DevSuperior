@@ -1,0 +1,142 @@
+ // Enum class
+
+  public enum Color{
+     BLACK,
+     BLUE,
+     RED;
+}
+
+  //  Abstract class for the other shapes
+public abstract class Shape{
+    private Color color;
+    
+    public Shape(){
+        
+    }
+    
+    public Shape(Color color){
+        
+        this.color = color;
+    }
+    
+    public Color getColor(){
+        return color;
+    }
+    
+    public void setColor(Color color){
+        this.color  = color;
+    }
+    
+    public abstract double area();
+}
+
+    // Fisrt of the shapes that extends the super class
+public class Rectangle extends Shape{
+    private Double width;
+    private Double heigth;
+    
+    public Rectangle(){
+        super();
+    }
+        
+    public Rectangle(Color color, Double width, Double heigth){
+        super(color);
+        this.width = width;
+        this.heigth = heigth;
+    }
+    
+    public Double getWidth(){
+        return width;
+    }
+    
+     public Double getHeigth(){
+        return heigth;
+    }
+    
+    public void setWidth(Double width){
+        this.width = width;
+    }
+    
+     public void setHeigth(Double heigth){
+        this.heigth = heigth;
+    }
+    
+        @Override
+         public  double area(){
+             return width * heigth;
+         }
+}
+
+    // Second shape that extends the super class
+public class Circle extends Shape{
+    private Double radius;
+    
+    public Circle(){
+        super();
+    }
+    public Circle(Color color, Double radius){
+        super(color);
+        this.radius = radius;
+    }
+    
+    public Double getRadius(){
+        return radius;
+    }
+    
+    public void setRadius(){
+        this.radius = radius;
+    }
+    
+    
+    
+     @Override
+         public  double area(){
+             return Math.PI * radius * radius;
+         }
+}
+
+    // Application and execution with the instances and logics
+
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	 Scanner sc = new Scanner(System.in);
+	 List <Shape> list = new ArrayList<>();
+	 
+	 System.out.print("Enter the number of shapes: ");
+	 int n = sc.nextInt();
+	 
+	 for(int i = 1; i <= n; i++ ){
+	      System.out.println("Shape #" + i + "data:  ");
+	       System.out.print("Rectangle or Circle (r/c)? ");
+	       char ch = sc.next().charAt(0);
+	       System.out.print("Color  (BLACK/BLUE/RED): ");
+	       Color color  = Color.valueOf(sc.next());
+	           if(ch == 'r'){
+	           System.out.print("Width: ");
+	           double width = sc.nextDouble();
+	           System.out.print("Heigth: ");
+	           double heigth = sc.nextDouble();
+	             list.add(new Rectangle(color, width, heigth));
+	             }else{
+	                  System.out.print("Radius: ");
+	                   double radius = sc.nextDouble();
+	                   list.add(new Circle(color, radius));
+	             }
+	          }
+	           System.out.println();
+	            System.out.println("SHAPE AREAS: ");
+	            for(Shape shape : list){
+	                 System.out.println(String.format("%.2f", shape.area()));	            
+                  }
+	
+	          sc.close();
+	
+	  }
+}
