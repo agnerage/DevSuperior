@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Main{
+    
+     public static void main(String[] args) {
+         
+     method1();
+     System.out.println("end of program");
+    }
+    
+	public static void method1(){
+          System.out.println("Start method 1");
+          method2();
+          System.out.println("end method 1");
+	 }
+	 
+	public static void method2(){
+    Scanner sc = new Scanner(System.in);
+     System.out.println("Start Method 2");
+    try {
+        String [] vect = sc.nextLine().split(" ");
+    int position = sc.nextInt();
+    System.out.println(vect[position]);
+    
+    }catch (ArrayIndexOutOfBoundsException e){
+    System.out.println("Invalid position");
+    e.printStackTrace();
+    sc.next();
+     }catch (InputMismatchException e){
+        System.out.println("Input error");
+     }
+       sc.close();
+       System.out.println("Method 2 End");
+	}
+}
